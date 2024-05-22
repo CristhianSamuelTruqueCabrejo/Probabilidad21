@@ -1,0 +1,23 @@
+import random
+
+def simular_bernoulli(p, max_iter):
+    suma = 0
+    for _ in range(max_iter):
+        rnd = random.random()  # Genera un número aleatorio RN D ∈ (0,1)
+        if rnd < p:
+            suma += 1
+    valor_esperado = suma / max_iter
+    return valor_esperado
+
+# Parámetros
+p = 0.4
+max_iter = 10000
+
+# Ejecución del algoritmo
+valor_esperado = simular_bernoulli(p, max_iter)
+print(f"Valor esperado aproximado: {valor_esperado}")
+
+# Repeticiones para observar la variabilidad
+valores_esperados = [simular_bernoulli(p, max_iter) for _ in range(5)]
+print(f"Valores esperados en repeticiones: {valores_esperados}")
+

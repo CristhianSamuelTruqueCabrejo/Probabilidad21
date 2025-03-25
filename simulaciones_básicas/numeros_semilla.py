@@ -1,23 +1,23 @@
-import time
+import time, math
 
-print('Generador de números aleatorios a través del método de semilla')
+def numeros_generados_semilla():
+    semilla = time.time()
+    multiplicador  = semilla * 2
+    sumando = semilla / 10
+    norma = 2**32
+    print(semilla)
+    numeros_generados = []
 
-#-----------------------Ingreso de datos por parte del usuario--------------------
-multiplicador  = int(input('Multiplicador: '))
-sumando = int(input('Sumando: '))
-norma = int(input('Norma: '))
+    for i in range (10):
+        
+        semilla = (multiplicador * semilla + sumando) % norma
+        numeros_generados.append(semilla)
+        
+        sumando = multiplicador - int(multiplicador)
+
+    return numeros_generados
 
 
-semilla = time.perf_counter()
-
-
-
-i = 0
-while i < 10:
-
-    semilla = (multiplicador * semilla + sumando) % norma
-     
-    
-    print(f"{i+1}.    {semilla}")
-
-    i += 1
+numeros_generados = numeros_generados_semilla()
+for i,num in enumerate(numeros_generados):
+    print(f'{i + 1}. {num}')
